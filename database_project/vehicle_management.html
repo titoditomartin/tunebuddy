@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Management</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vehicle Management</h1>
+
+    <!-- Form for Adding a Vehicle -->
+    <h2>Add Vehicle</h2>
+    <form action="add_vehicle.php" method="post">
+        <label for="customer_type">Customer Type:</label>
+        <select id="customer_type" name="customer_type" required>
+            <option value="new">New Customer</option>
+            <option value="existing">Existing Customer</option>
+        </select>
+        
+        <label for="brand">Brand:</label>
+        <input type="text" id="brand" name="brand" required>
+        
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" required>
+        
+        <label for="year">Year:</label>
+        <input type="text" id="year" name="year" required>
+        
+        <!-- Additional fields for new customer -->
+        <div id="newCustomerFields" style="display: none;">
+            <label for="customer_name">Customer Name:</label>
+            <input type="text" id="customer_name" name="customer_name">
+            
+            <label for="customer_contact">Customer Contact:</label>
+            <input type="text" id="customer_contact" name="customer_contact">
+        </div>
+        
+        <!-- Additional fields for existing customer -->
+        <div id="existingCustomerFields" style="display: none;">
+            <label for="existing_customer_id">Existing Customer ID:</label>
+            <input type="text" id="existing_customer_id" name="existing_customer_id">
+        </div>
+
+        <input type="submit" value="Add Vehicle">
+    </form>
+
+    <!-- Form for Updating Vehicle Information -->
+    <h2>Update Vehicle</h2>
+    <form action="update_vehicle.php" method="post">
+        <label for="vehicle_id">Vehicle ID:</label>
+        <input type="text" id="vehicle_id" name="vehicle_id" required>
+
+        <label for="new_model">New Model:</label>
+        <input type="text" id="new_model" name="new_model">
+        
+        <label for="new_year">New Year:</label>
+        <input type="text" id="new_year" name="new_year">
+        
+        <input type="submit" value="Update Vehicle">
+    </form>
+
+    <!-- Form for Viewing Vehicle Information -->
+    <h2>View Vehicle Information</h2>
+    <form action="view_vehicle.php" method="get">
+        <label for="vehicle_id_view">Vehicle ID:</label>
+        <input type="text" id="vehicle_id_view" name="vehicle_id_view" required>
+        
+        <input type="submit" value="View Vehicle">
+    </form>
+
+    <!-- Other sections for deleting, searching, etc. -->
+
+    <script>
+        document.getElementById('customer_type').addEventListener('change', function() {
+            var newCustomerFields = document.getElementById('newCustomerFields');
+            var existingCustomerFields = document.getElementById('existingCustomerFields');
+            
+            newCustomerFields.style.display = this.value === 'new' ? 'block' : 'none';
+            existingCustomerFields.style.display = this.value === 'existing' ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>

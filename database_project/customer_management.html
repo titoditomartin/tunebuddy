@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        textarea {
+            width: 300px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Customer Management</h1>
+
+    <div class="form-container">
+        <!-- Form for Adding a Customer -->
+        <h2>Add Customer</h2>
+        <form action="add_customer.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" name="contact" required><br><br>
+            
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea><br><br>
+            
+            <input type="submit" value="Add Customer">
+        </form>
+
+        <script>
+            function reloadPageAfterSubmit() {
+                // You can add additional logic or checks here if needed
+                window.location.reload();
+            }
+        </script>
+
+        <!-- Form for Updating Customer Information -->
+        <h2>Update Customer</h2>
+        <form action="update_customer.php" method="post">
+            <label for="customer_id_update">Customer ID:</label>
+            <input type="text" id="customer_id_update" name="customer_id_update" required><br><br>
+
+            <label for="new_name">New Name:</label>
+            <input type="text" id="new_name" name="new_name"><br><br>
+            
+            <label for="new_contact">New Contact:</label>
+            <input type="text" id="new_contact" name="new_contact"><br><br>
+            
+            <label for="new_address">New Address:</label>
+            <textarea id="new_address" name="new_address"></textarea><br><br>
+            
+            <input type="submit" value="Update Customer">
+        </form>
+
+        <!-- Form for Viewing Customer Information -->
+        <h2>View Customer Information</h2>
+        <div class="search-bar">
+            <!-- Search by ID -->
+            <input type="text" id="search_id" name="search_id" placeholder="Search by ID">
+            
+            <!-- Search by Name -->
+            <input type="text" id="search_name" name="search_name" placeholder="Search by Name">
+        </div>
+        <form action="view_customer.php" method="get">
+            <!-- Display selected customer ID -->
+            <label for="customer_id_view">Customer ID:</label>
+            <select id="customer_id_view" name="customer_id_view" required>
+                <option value="1">Customer 1</option>
+                <option value="2">Customer 2</option>
+                <!-- Add more options here -->
+            </select><br><br>
+            
+            <input type="submit" value="View Customer">
+        </form>
+    </div>
+</body>
+</html>
