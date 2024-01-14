@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Record Management</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Service Record Management</h1>
+
+    <!-- Form for Adding a Service Record -->
+    <h2>Add Service Record</h2>
+    <form action="add_service.php" method="post">
+        <label for="service_desc">Service Description:</label>
+        <input type="text" id="service_desc" name="service_desc" required>
+        
+        <label for="vehicle_id">Vehicle ID:</label>
+        <input type="number" id="vehicle_id" name="vehicle_id" required>
+        
+        <label for="service_date">Service Date:</label>
+        <input type="date" id="service_date" name="service_date" required>
+        
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required>
+        
+        <input type="submit" value="Add Service Record">
+    </form>
+
+    <!-- Form for Updating Service Record Information -->
+    <h2>Update Service Record</h2>
+    <form action="update_service.php" method="post">
+        <label for="service_id">Service ID:</label>
+        <input type="number" id="service_id" name="service_id" required>
+
+        <label for="new_service_desc">New Service Description:</label>
+        <input type="text" id="new_service_desc" name="new_service_desc">
+        
+        <label for="new_vehicle_id">New Vehicle ID:</label>
+        <input type="number" id="new_vehicle_id" name="new_vehicle_id">
+        
+        <label for="new_service_date">New Service Date:</label>
+        <input type="date" id="new_service_date" name="new_service_date">
+        
+        <label for="new_price">New Price:</label>
+        <input type="number" id="new_price" name="new_price">
+        
+        <input type="submit" value="Update Service Record">
+    </form>
+
+    <!-- Form for Viewing Service Record Information -->
+    <h2>View Service Record Information</h2>
+    <form action="view_service.php" method="get">
+        <label for="service_id_view">Service ID:</label>
+        <input type="number" id="service_id_view" name="service_id_view" required>
+        
+        <input type="submit" value="View Service Record">
+    </form>
+
+    <h2>Print Invoice by Service ID</h2>
+    <form action="invoice.php" method="get">
+        <label for="print_invoice_id">Service ID:</label>
+        <input type="number" id="print_invoice_id" name="service_id" required>
+
+        <input type="submit" value="Print Invoice">
+    </form>
+
+    <!-- Other sections for deleting, searching, etc. -->
+    <a href="logout.php">Logout</a>
+</body>
+</html>
